@@ -4,6 +4,74 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.");
+       Console.Write("What is your grade percentage? ");
+string userInput = Console.ReadLine() ?? "";
+int grade = int.Parse(userInput);
+
+// Core Requirement 3: store letter in a variable
+string letter;
+
+if (grade >= 90)
+{
+    letter = "A";
+}
+else if (grade >= 80)
+{
+    letter = "B";
+}
+else if (grade >= 70)
+{
+    letter = "C";
+}
+else if (grade >= 60)
+{
+    letter = "D";
+}
+else
+{
+    letter = "F";
+}
+
+// Stretch Challenge 1: determine +/- sign using last digit
+int lastDigit = grade % 10;
+string sign;
+
+if (lastDigit >= 7)
+{
+    sign = "+";
+}
+else if (lastDigit < 3)
+{
+    sign = "-";
+}
+else
+{
+    sign = "";
+}
+
+// Stretch Challenge 2: no A+ grade, only A and A-
+if (letter == "A" && sign == "+")
+{
+    sign = "";
+}
+
+// Stretch Challenge 3: no F+ or F-, only F
+if (letter == "F")
+{
+    sign = "";
+}
+
+Console.WriteLine($"Your letter grade is: {letter}{sign}");
+
+// Core Requirement 2: pass/fail message
+if (grade >= 70)
+{
+    Console.WriteLine("Congratulations! You passed the course.");
+}
+else
+{
+    Console.WriteLine("Don't give up! Keep working hard for next time.");
+}
+
     }
 }
